@@ -1,11 +1,10 @@
 import React,{useEffect, useState} from 'react';
 import {marked} from 'marked';
-import { markDownSet } from '../reduxStore/markdownSlice';
+import { markdownSet, markdownPreview } from '../reduxStore/markdownSlice';
 
-function TextArea({markdown, dispatch}) {
 
+function TextArea({markdown, dispatch,onChange}) {
   
-
   return (
     <div className='card' id='editor'>
       <div className='card-header' style={{backgroundColor:'#20c997'}}>
@@ -18,12 +17,12 @@ function TextArea({markdown, dispatch}) {
               id="exampleFormControlTextarea1"
               rows="5"
               value={markdown}
-              onChange={(e) => {  dispatch(markDownSet(e.target.value)); }  }
+              onChange={function(e){ return e.target.value}}
 
             />
           </div>
           <div>
-          <p>{markdown}</p>
+          <p></p>
           </div>
       </div>
   </div>

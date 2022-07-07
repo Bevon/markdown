@@ -1,20 +1,24 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { marked } from 'marked';
 
+
 export const markDownSlice = createSlice({
     name: 'markdown',
     initialState: {
         markdown: '',
-        preview: ''
     },
     reducers : {
-        markDownSet: (state, action) => {
-            state.markdown = action.payload;
-            state.preview = marked.parse(action.payload);
+        markdownSet: (state, action) => {
+            state.markdown = {...state
+                ,...action.payload};
         },
+        markdownPreview: (state, action) => {
+            const preview = marked(state.markdown);
+            
+        }
         
     }
 });
 
-export const {markDownSet} = markDownSlice.actions;
+export const {markdownPreview, markdownSet} = markDownSlice.actions;
 export default markDownSlice.reducer;
