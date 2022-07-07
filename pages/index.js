@@ -4,13 +4,20 @@ import path from 'path';
 import { marked } from 'marked';
 import Head from 'next/head';
 import Image from 'next/image';
+import jQuery from 'jquery';
 
 function Home({markdown, userData}) {
   const [markdownState, setMarkdownState] = useState(markdown);
   const [previewState, setPreviewState] = useState('');
 
+  function SetBodyBackgroundColor(color) {
+    jQuery('body').css('background-color', color);
+  }
+
+
 
   useEffect(function (){
+    SetBodyBackgroundColor('#20c997');
     setPreviewState(marked.parse(markdownState));
   
   }, [markdownState]);
@@ -26,8 +33,8 @@ function Home({markdown, userData}) {
         />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossOrigin="anonymous"/>
       </Head>
-      <div className='container-fluid vh-100'>
-        <div className='container'>
+      <div className='container-fluid'>
+        <div className='container mt-4'>
       <div className='card' id='editor'>
       <div className='card-header' style={{backgroundColor:'#20c997'}}>
       <label htmlFor="exampleFormControlTextarea1" style={{fontSize:32}}><i className="fa-brands fa-free-code-camp" style={{fontSize:32, color:'crimson'}}></i><b> Editor</b></label>
@@ -46,7 +53,7 @@ function Home({markdown, userData}) {
   </div>
   <div className='card mt-5 mb-5' id='preview'>
       <div className='card-header' style={{backgroundColor:'#20c997'}}>
-      <label htmlFor="exampleFormControlTextarea1" style={{fontSize:32}}><i className="fa-brands fa-free-code-camp" style={{fontSize:32, color:'crimson'}}></i><b>Previewer</b></label>
+      <label htmlFor="exampleFormControlTextarea1" style={{fontSize:32}}><i className="fa-brands fa-free-code-camp" style={{fontSize:32, color:'crimson'}}></i><b> Previewer</b></label>
       </div>
       <div className='card-body' id='content' dangerouslySetInnerHTML={{__html:previewState}}>
       </div>
