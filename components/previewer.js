@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { marked } from 'marked';
 import { markDownSet } from '../reduxStore/markdownSlice';
-markDownSet
+
 
 
 function Previewer({ previewState }) {

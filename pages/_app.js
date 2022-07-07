@@ -1,4 +1,4 @@
-// import '../styles/globals.css'
+import '../styles/globals.css'
 import store from "../reduxStore/markdownStore";
 import { Provider } from "react-redux";
 

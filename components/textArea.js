@@ -1,7 +1,4 @@
 import React,{useEffect, useState} from 'react';
-import {marked} from 'marked';
-import { markdownSet, markdownPreview } from '../reduxStore/markdownSlice';
-
 
 function TextArea({markdown, dispatch,onChange}) {
   
